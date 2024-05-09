@@ -50,21 +50,18 @@ public class CalculatorTest {
 
     @Test
     public void canAddOnePlusOne() {
-        Calculator calc = new Calculator();
         int sum = calc.add(1, 1);
         assertEquals(2, sum);
     }
 
     @Test
     public void canAddOnePlusMinusOne() {
-        Calculator calc = new Calculator();
         int sum = calc.add(1, -1);
         assertEquals(0, sum);
     }
 
     @Test
     public void canAddMinusOnePlusMinusOne() {
-        Calculator calc = new Calculator();
         int sum = calc.add(-1, -1);
         assertEquals(-2, sum);
     }
