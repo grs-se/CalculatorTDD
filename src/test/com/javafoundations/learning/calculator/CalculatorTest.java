@@ -71,4 +71,30 @@ public class CalculatorTest {
 
     // duplication of code bad in test code as well as production code
 
+    ////////////
+    // EDGE CASES
+    ////////////
+    // What would happen if we were to pass in the largest number that an integer can hold in Java + 1 or 2?
+    @Test
+    public void canAddMaxIntPlusOne() {
+        int sum = calc.add(Integer.MAX_VALUE, 1); // = -2147483648 not 2147483647 as expected
+        // We're assuming that adding 1 to this interger value is going to do what we think it's going to do
+        // we might just be doubling down on logic that is faulty
+        // printing out we get the wrong sign, it's negative:
+        // so our unit tests are only as good as the scenarios we can think of
+        // and our unit tests are only as good as the assumptions of what we can expect
+        // Signed Integer can hold up to 32-bit or [-2.147.483.648 to 2.147.483.647]
+        // Unsigned is [0 - 4294967295]
+        // Integer.MAX_VALUE is 2147483647
+        // Integer.MIN_VALUE is -2147483648
+        System.out.println(sum);
+//        assertEquals(Integer.MAX_VALUE + 1, sum);
+        // since we only have 32 bits available to use and the most significant bit for an integer is used for a sign
+        // what happens when you take the largest number that you can hold for an integer and then add 1 more to it?
+        // you run up against the edge of the 32 bits and the sign flips to negative
+        // so we can force the JVM to tdo this math with more bits by makign one of these numbers not be a int
+        assertEquals(Integer.MAX_VALUE + 1L, sum);
+        // THINK OF TRUE EDGE CASES and then be very careful about how you test these
+        // print out the values
+    }
 }
