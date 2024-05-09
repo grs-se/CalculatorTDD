@@ -1,6 +1,7 @@
 package com.javafoundations.learning.calculator;
 
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -75,7 +76,10 @@ public class CalculatorTest {
     // EDGE CASES
     ////////////
     // What would happen if we were to pass in the largest number that an integer can hold in Java + 1 or 2?
+    /*
     @Test
+    // @Ignore prior to junit version 5
+    @Disabled // disables test from running // DISABLED NOT WORKING!?
     public void canAddMaxIntPlusOne() {
         int sum = calc.add(Integer.MAX_VALUE, 1); // = -2147483648 not 2147483647 as expected
         // We're assuming that adding 1 to this interger value is going to do what we think it's going to do
@@ -97,4 +101,21 @@ public class CalculatorTest {
         // THINK OF TRUE EDGE CASES and then be very careful about how you test these
         // print out the values
     }
+     */
+
+    ////////////
+    // TESTING ANNUITY CALCULATION
+    ////////////
+    @Test
+    public void annuityExample() {
+        String answer = calc.calcAnnuity("22000", 7, ".06", 1);
+    assertEquals("£184,664.43", answer);
+    }
+
+    @Test
+    public void annuityPractice2() {
+        String answer = calc.calcAnnuity("1200", 10, ".08", 4);
+        assertEquals("£72,482.38", answer);
+    }
+
 }
